@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ЭЛЯ блин держи и посторайся с меня не смеяться 💖</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #FFFFFF ,#9216A8);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 25px #fff, 0 0 20px #ff1493;
+            animation: heartBeat 1.5s infinite alternate;
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        p, h1 {
+            color: #FFFFFF;
+            text-shadow: 0 0 5px #fff, 0 0 10px #ff77a9;
+        }
+        .slider {
+            position: relative;
+            max-width: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .slider img {
+            width: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+        .slider img.active {
+            display: block;
+        }
+        .slider-buttons {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        .slider-buttons button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .slider-buttons button:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .star, .heart {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            opacity: 1;
+            animation: fall 5s linear infinite;
+        }
+        .heart {
+            color: red;
+            font-size: 20px;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 1024px) {
+            body {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .slider {
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .slider {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Эля блин спасибо тебе за все!💖</h1>
+    <p>Дорогая Эля, ты самая чудесная! 💕 Пусть этот день будет наполнен счастьем, теплом и любовью. Каждая прогулка с тобой поднимает настроение, даже если день не задался. Мне нравится в тебе всё — твоё общение, манера речи, искренность и невероятная красота. Ты особенная, и мне грустно, когда ты себя недооцениваешь, ведь ты делаешь мои дни ярче, теплее и счастливее. Спасибо, что ты есть. 💖
+    И главное, не забывай о нашем наливчике! 💘</p>
+    <p>ой блин Эля звездочка ты нашей компании желаю тебе удачи любви и денег 💸💲 да побольше и не спотыкайся:) (ели сделал эту кривую фигню)
+     </p>
+    <div class="slider">
+        <img src="script/love/image1.jpg" class="active">
+        <img src="script/love/image2.jpg">
+        <img src="script/love/image3.jpg">
+        <div class="slider-buttons">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slider img");
+        function showSlide(index) {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        function createElement(type, className, content) {
+            const elem = document.createElement("div");
+            elem.classList.add(className);
+            elem.innerHTML = content || "";
+            elem.style.left = `${Math.random() * 100}vw`;
+            elem.style.top = "-5px";
+            document.body.appendChild(elem);
+            setTimeout(() => elem.remove(), 5000);
+        }
+        setInterval(() => createElement("div", "star"), 300);
+        setInterval(() => createElement("div", "heart", "❤️"), 400);
+    </script>
+
+</body>
+</html>
